@@ -8,38 +8,38 @@ let touchEndX = 0;
 
 // Load weights from local storage
 const getStoredWeights = () => {
-    const stored = localStorage.getItem('workout_weights');
-    return stored ? JSON.parse(stored) : {};
+  const stored = localStorage.getItem('workout_weights');
+  return stored ? JSON.parse(stored) : {};
 };
 
 const saveWeight = (id, weight) => {
-    const weights = getStoredWeights();
-    weights[id] = weight;
-    localStorage.setItem('workout_weights', JSON.stringify(weights));
+  const weights = getStoredWeights();
+  weights[id] = weight;
+  localStorage.setItem('workout_weights', JSON.stringify(weights));
 };
 
 // Render Functions
 const renderLanding = () => {
-    app.innerHTML = `
+  app.innerHTML = `
     <div id="landing-view" class="view active">
       <h1>Workout Planner</h1>
       <p>Ready to crush it?</p>
       <button class="start-btn" id="start-btn">START WORKOUT</button>
     </div>
   `;
-    document.getElementById('start-btn').addEventListener('click', nextSlide);
-    // Also allow clicking anywhere on landing as per request "When I click the screen"
-    document.getElementById('landing-view').addEventListener('click', (e) => {
-        if (e.target.id !== 'start-btn') nextSlide();
-    });
+  document.getElementById('start-btn').addEventListener('click', nextSlide);
+  // Also allow clicking anywhere on landing as per request "When I click the screen"
+  document.getElementById('landing-view').addEventListener('click', (e) => {
+    if (e.target.id !== 'start-btn') nextSlide();
+  });
 };
 
 const renderExercise = (index) => {
-    const exercise = exercises[index];
-    const weights = getStoredWeights();
-    const currentWeight = weights[exercise.id] || '';
+  const exercise = exercises[index];
+  const weights = getStoredWeights();
+  const currentWeight = weights[exercise.id] || '';
 
-    const html = `
+  const html = `
     <div class="view active" id="exercise-view">
       <h2>${exercise.name}</h2>
       <div class="exercise-card">
@@ -71,24 +71,22 @@ const renderExercise = (index) => {
             <input type="number" id="weight-${exercise.id}" class="weight-input" value="${currentWeight}" placeholder="0">
           </div>
         </div>
-        
-        <div class="nav-hint">Swipe Left for Next</div>
       </div>
     </div>
   `;
-    app.innerHTML = html;
+  app.innerHTML = html;
 
-    // Weight input listener
-    const input = document.getElementById(`weight-${exercise.id}`);
-    input.addEventListener('input', (e) => {
-        saveWeight(exercise.id, e.target.value);
-    });
+  // Weight input listener
+  const input = document.getElementById(`weight-${exercise.id}`);
+  input.addEventListener('input', (e) => {
+    saveWeight(exercise.id, e.target.value);
+  });
 
-    setupSwipe();
+  setupSwipe();
 };
 
 const renderCongrats = () => {
-    app.innerHTML = `
+  app.innerHTML = `
     <div id="congrats-view" class="view active">
       <div class="congrats-icon">🎉</div>
       <h1>CONGRATS!</h1>
@@ -96,66 +94,66 @@ const renderCongrats = () => {
       <button class="start-btn" id="finish-btn">FINISH</button>
     </div>
   `;
-    document.getElementById('finish-btn').addEventListener('click', resetApp);
-    document.getElementById('congrats-view').addEventListener('click', (e) => {
-        if (e.target.id !== 'finish-btn') resetApp();
-    });
+  document.getElementById('finish-btn').addEventListener('click', resetApp);
+  document.getElementById('congrats-view').addEventListener('click', (e) => {
+    if (e.target.id !== 'finish-btn') resetApp();
+  });
 };
 
 // Navigation Logic
 const nextSlide = () => {
-    currentIndex++;
-    updateView();
+  currentIndex++;
+  updateView();
 };
 
 const prevSlide = () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateView();
-    }
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateView();
+  }
 };
 
 const resetApp = () => {
-    currentIndex = -1;
-    updateView();
+  currentIndex = -1;
+  updateView();
 };
 
 const updateView = () => {
-    if (currentIndex === -1) {
-        renderLanding();
-    } else if (currentIndex < exercises.length) {
-        renderExercise(currentIndex);
-    } else {
-        renderCongrats();
-    }
+  if (currentIndex === -1) {
+    renderLanding();
+  } else if (currentIndex < exercises.length) {
+    renderExercise(currentIndex);
+  } else {
+    renderCongrats();
+  }
 };
 
 // Swipe Logic
 const setupSwipe = () => {
-    const view = document.getElementById('exercise-view');
-    if (!view) return;
+  const view = document.getElementById('exercise-view');
+  if (!view) return;
 
-    view.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
+  view.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
 
-    view.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
+  view.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
 };
 
 const handleSwipe = () => {
-    const threshold = 50;
-    const swipeDistance = touchStartX - touchEndX;
+  const threshold = 50;
+  const swipeDistance = touchStartX - touchEndX;
 
-    if (swipeDistance > threshold) {
-        // Swiped Left -> Next
-        nextSlide();
-    } else if (swipeDistance < -threshold) {
-        // Swiped Right -> Prev
-        prevSlide();
-    }
+  if (swipeDistance > threshold) {
+    // Swiped Left -> Next
+    nextSlide();
+  } else if (swipeDistance < -threshold) {
+    // Swiped Right -> Prev
+    prevSlide();
+  }
 };
 
 // Init

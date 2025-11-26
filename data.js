@@ -21,7 +21,7 @@ export const exercises = [
     sets: 3,
     reps: 8,
     duration: null,
-    image: null
+    image: "lunges_placeholder.png"
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export const exercises = [
     sets: 3,
     reps: 10,
     duration: null,
-    image: ""
+    image: "dumbbell_rows_placeholder.png"
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ export const exercises = [
     sets: 3,
     reps: 10,
     duration: null,
-    image: ""
+    image: "overhead_press_placeholder.png"
   },
   {
     id: 7,
@@ -61,7 +61,7 @@ export const exercises = [
     sets: 3,
     reps: 10,
     duration: null,
-    image: ""
+    image: "bicycle_crunches_placeholder.png"
   },
   {
     id: 9,
@@ -69,6 +69,6 @@ export const exercises = [
     sets: 3,
     reps: null,
     duration: "01:00",
-    image: ""
+    image: "stretching_placeholder.png"
   },
 ];
