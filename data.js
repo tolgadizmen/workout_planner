@@ -2,6 +2,7 @@ export const exercises = [
   {
     id: 1,
     name: "Light Jog",
+    category: "Warm-Up",
     sets: 1,
     reps: null,
     duration: "15:00",
@@ -10,6 +11,7 @@ export const exercises = [
   {
     id: 2,
     name: "Squat",
+    category: "Lower Body",
     sets: 3,
     reps: 10,
     duration: null,
@@ -18,6 +20,7 @@ export const exercises = [
   {
     id: 3,
     name: "Lunges",
+    category: "Lower Body",
     sets: 3,
     reps: 8,
     duration: null,
@@ -26,6 +29,7 @@ export const exercises = [
   {
     id: 4,
     name: "Push-Up",
+    category: "Upper Body",
     sets: 3,
     reps: 8,
     duration: null,
@@ -34,6 +38,7 @@ export const exercises = [
   {
     id: 5,
     name: "Dumbbell Rows",
+    category: "Upper Body",
     sets: 3,
     reps: 10,
     duration: null,
@@ -42,6 +47,7 @@ export const exercises = [
   {
     id: 6,
     name: "Overhead Press",
+    category: "Upper Body",
     sets: 3,
     reps: 10,
     duration: null,
@@ -50,6 +56,7 @@ export const exercises = [
   {
     id: 7,
     name: "Plank",
+    category: "Core",
     sets: 3,
     reps: null,
     duration: "00:30",
@@ -58,6 +65,7 @@ export const exercises = [
   {
     id: 8,
     name: "Bicycle Crunches",
+    category: "Core",
     sets: 3,
     reps: 10,
     duration: null,
@@ -66,6 +74,7 @@ export const exercises = [
   {
     id: 9,
     name: "Stretching",
+    category: "Cool Down",
     sets: 3,
     reps: null,
     duration: "01:00",

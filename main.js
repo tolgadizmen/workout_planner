@@ -23,7 +23,6 @@ const renderLanding = () => {
   app.innerHTML = `
     <div id="landing-view" class="view active">
       <h1>Workout Planner</h1>
-      <p>Ready to crush it?</p>
       <button class="start-btn" id="start-btn">START WORKOUT</button>
     </div>
   `;
@@ -39,10 +38,17 @@ const renderExercise = (index) => {
   const weights = getStoredWeights();
   const currentWeight = weights[exercise.id] || '';
 
+  // Generate progress dots
+  const dotsHtml = exercises.map((_, i) =>
+    `<div class="dot ${i === index ? 'active' : ''}"></div>`
+  ).join('');
+
   const html = `
     <div class="view active" id="exercise-view">
-      <h2>${exercise.name}</h2>
       <div class="exercise-card">
+        <div class="category-badge">${exercise.category}</div>
+        <h2 class="exercise-title">${exercise.name}</h2>
+        
         <img src="${exercise.image}" alt="${exercise.name}" class="exercise-image" onerror="this.src='https://placehold.co/600x400?text=${exercise.name}'">
         
         <div class="exercise-details">
@@ -67,11 +73,18 @@ const renderExercise = (index) => {
           </div>
 
           <div class="weight-input-container">
-            <label class="stat-label" for="weight-${exercise.id}">Weight (kg)</label>
+            <label class="stat-label" for="weight-${exercise.id}">Weight</label>
             <input type="number" id="weight-${exercise.id}" class="weight-input" value="${currentWeight}" placeholder="0">
+            <span class="stat-label">kg</span>
           </div>
         </div>
       </div>
+      
+      <div class="progress-dots">
+        ${dotsHtml}
+      </div>
+      
+      <div class="swipe-hint">← Swipe to navigate →</div>
     </div>
   `;
   app.innerHTML = html;
@@ -89,8 +102,8 @@ const renderCongrats = () => {
   app.innerHTML = `
     <div id="congrats-view" class="view active">
       <div class="congrats-icon">🎉</div>
-      <h1>CONGRATS!</h1>
-      <p>Workout Complete!</p>
+      <h1>Workout Complete!</h1>
+      <p>Great job on finishing your workout.</p>
       <button class="start-btn" id="finish-btn">FINISH</button>
     </div>
   `;
