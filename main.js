@@ -83,8 +83,6 @@ const renderExercise = (index) => {
       <div class="progress-dots">
         ${dotsHtml}
       </div>
-      
-      <div class="swipe-hint">← Swipe to navigate →</div>
     </div>
   `;
   app.innerHTML = html;
@@ -103,7 +101,6 @@ const renderCongrats = () => {
     <div id="congrats-view" class="view active">
       <div class="congrats-icon">🎉</div>
       <h1>Workout Complete!</h1>
-      <p>Great job on finishing your workout.</p>
       <button class="start-btn" id="finish-btn">FINISH</button>
     </div>
   `;
