@@ -8,21 +8,30 @@ I built this app because I needed a simple way to track my specific workout rout
 This app is designed to be used in the gym, on your phone. It features a swipe-based interface that lets you move through your exercises seamlessly, just like flipping through cards.
 
 ## Features
+- **Clean, Minimal Design**: Light theme with modern Inter typography for a premium, distraction-free experience.
+- **Exercise Categories**: Organized workouts by category (Warm-Up, Lower Body, Upper Body, Core, Cool Down).
 - **Swipe Navigation**: Move between exercises with a simple swipe left or right.
-- **Distraction-Free Interface**: A premium dark mode design that looks great and saves battery.
-- **Smart Tracking**: Remembers the weight you used for each exercise automatically (saved to your device).
+- **Progress Tracking**: Visual progress dots show where you are in your workout.
+- **Smart Weight Tracking**: Automatically remembers the weight you used for each exercise (saved to your device).
 - **No Login Required**: Your data lives on your phone. No accounts, no cloud sync issues.
-- **Visual Cues**: Custom illustrations for each exercise to keep you on track.
+- **Visual Cues**: Exercise images to keep you on track.
 
 ## How to Use
 1.  **Open the App**: Load the URL on your mobile browser.
 2.  **Start Workout**: Tap the start button to begin.
 3.  **Track & Swipe**: 
-    -   View the exercise details (Sets, Reps, Duration).
+    -   View the exercise category, name, and details (Sets, Reps, Duration).
     -   Enter your weight (it will be saved for next time).
     -   Swipe **Left** to go to the next exercise.
     -   Swipe **Right** to go back.
+    -   Track your progress with the dots at the bottom.
 4.  **Finish**: Reach the celebration screen and tap Finish to reset.
+
+## Design Philosophy
+- **Minimalism**: Clean, light interface with generous white space
+- **Typography**: Modern Inter font with proper weight hierarchy
+- **Mobile-First**: Optimized for use in the gym on your phone
+- **Performance**: Fast load times with vanilla JavaScript
 
 ## Technical Details
 Built with simplicity and performance in mind:
@@ -30,8 +39,10 @@ Built with simplicity and performance in mind:
 -   **Vite**: For a modern, fast development experience.
 -   **CSS Variables**: For consistent theming and easy adjustments.
 -   **Local Storage**: For persistent data without a backend.
+-   **Google Fonts**: Inter font family for modern, elegant typography.
 
 ## Running Locally
 1.  Clone the repo.
 2.  Run `npm install`.
 3.  Run `npm run dev`.
+4.  Open `http://localhost:5173/` on your device.
